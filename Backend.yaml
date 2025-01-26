@@ -32,3 +32,9 @@
       src: /tmp/backend.zip
       dest: /app
       remote_src: yes
+
+  - name: Install npm.
+    community.general.npm:
+      name: npm
+      path: /app
+  
