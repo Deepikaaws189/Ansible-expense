@@ -10,8 +10,11 @@
 
   - name: install NodeJS
     ansible.builtin.package:
-      name: nodejs
+      name: "{{item}}"
       state: installed
+    loop:
+      - Nodejs
+      - mysql
 
   - name: create expense user
     ansible.builtin.user:
@@ -37,4 +40,17 @@
     community.general.npm:
       name: npm
       path: /app
-  
+
+  - name: copy backend.service
+    ansible.builtin.file:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+
+  - name: Try to create database as root/nopassword first. 
+    community.mysql.mysql_db:
+      state: import
+      name: all
+      login_user: root
+      login_password: ExpenseApp@1
+      login_host: mysql.dpumedia.site
+      target: /app/schema/backend.sql
