@@ -19,6 +19,7 @@
       login_password: ExpenseApp@1
       login_host: mysql.dpumedia.site
     register: Mysql_info
+    ignore_error: true
 
   - name: print the output
     ansible.builtin.debug:
