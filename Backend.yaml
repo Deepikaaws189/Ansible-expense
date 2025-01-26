@@ -59,3 +59,10 @@
       login_password: ExpenseApp@1
       login_host: mysql.dpumedia.site
       target: /app/schema/backend.sql
+
+  - name: Make sure a service unit is running
+    ansible.builtin.systemd_service:
+      enabled: true
+      state: restarted
+      daemon_reload: true
+      name: backend
