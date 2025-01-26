@@ -4,6 +4,6 @@
   tasks: #MySQL Server 8.0.x
   - name: install mysql
     ansible.builtin.package:
-      name: Mysql
+      name: mysql-server
       state: installed
   
