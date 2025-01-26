@@ -13,7 +13,7 @@
       name: "{{item}}"
       state: installed
     loop:
-      - Nodejs
+      - nodejs
       - mysql
 
   - name: create expense user
